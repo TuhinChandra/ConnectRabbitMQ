@@ -33,4 +33,11 @@ public class MessageExchangeController {
 		rabbitTemplate.convertAndSend("TestExchange", "testRoutingKey", orderPickDetails);
 	}
 
+	@PostMapping("/sendPickJson")
+	public void sendPickMessageJson(@RequestParam(value = "sapOrderId", required = true) final String sapOrderId,
+								@RequestParam(value = "pickId", required = true) final String pickId) {
+		String orderPickDetailsJson = orderPickService.loadOrderPickDetailsToJson(sapOrderId,pickId);
+		rabbitTemplate.convertAndSend("TestExchange", "testRoutingKey", orderPickDetailsJson);
+	}
+
 }

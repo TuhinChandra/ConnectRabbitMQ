@@ -17,6 +17,15 @@ public class OrderPickDetails implements Serializable {
         this.pickId=pickId;
     }
 
+    @Override
+    public String toString()
+    {
+        return "OrderPickDetails [sapOrderId="
+                + sapOrderId
+                + ", pickId="
+                + pickId + "]";
+    }
+
 /*  private String submittedDate;
     private String orderState;
     private String pickingStatus;
